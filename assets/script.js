@@ -116,10 +116,6 @@ const slides = [
 	  "image": "slide4.png",
 	  "tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 	},
-	{
-	  "image": "slide5.jpg",
-	  "tagLine": "blabla <span>avec découpe laser sur mesure</span>"
-	}
   ];
   
   const arrowLeft = document.querySelector('.arrow_left');
@@ -159,33 +155,40 @@ const slides = [
 	}
   }
   
-  function creerBulletPoints() {
+
+function creerBulletPoints() {
 	for (let i = 0; i < slides.length; i++) {
 	  const dot = document.createElement("div");
 	  dot.className = "dot";
 	  dots.appendChild(dot);
+  
+	  if (i === 0) {
+		dot.classList.add("dot_selected");
+	  }
 	}
   }
   
   function imageSuivante() {
-	if (index < slides.length - 1) {
-	  index++;
-	  console.log('index : ' + index);
-	  afficherImage();
+	index++;
+  	if (index === slides.length) 
+	{
+    index = 0; 
+ 	}
+  	console.log('index : ' + index);
+  	afficherImage();
 	}
-  }
+  
   
   function imagePrecedente() {
-	if (index > 0) {
-	  index--;
-	  console.log('index : ' + index);
-	  afficherImage();
-	}
+	index--;
+  	if (index < 0) 
+	{
+    index = slides.length - 1; 
+ 	}
+  console.log('index : ' + index);
+  afficherImage();
   }
   
 
 	
-
-
-
 
